@@ -1,17 +1,33 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 import MainLayout from "../layouts";
+import { GetStaticProps } from "next";
 
-export default function Home() {
+export default function Home(props) {
+  props.topArticles.map((article) => {
+    console.log(article.title);
+  });
   return (
-    <div className={styles.container}>
+    <MainLayout>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>News</title>
       </Head>
-      <MainLayout>
-        <p></p>
-      </MainLayout>
-    </div>
+    </MainLayout>
   );
 }
+
+export const getStaticProps = async () => {
+  const pageSize = 10;
+  const topRes = await fetch(
+    `https://newsapi.org/v2/top-headlines?country=ca&pageSize=${pageSize}&apiKey=f941d1c7cef6412e9a3c8d39f6aa3688`
+  );
+  const topJson = await topRes.json();
+  const topArticles = topJson?.articles;
+
+  return {
+    props: {
+      topArticles,
+    },
+    revalidate: 60 * 10,
+  };
+};
