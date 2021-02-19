@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 import MainLayout from "../layouts";
 import { GetStaticProps } from "next";
+import Article from "../components/article";
 
 export default function Home(props) {
   props.topArticles.map((article) => {
@@ -12,6 +13,9 @@ export default function Home(props) {
       <Head>
         <title>News</title>
       </Head>
+      <div className={styles.main}>
+        <Article title="headlines" articles={props.topArticles} />
+      </div>
     </MainLayout>
   );
 }
