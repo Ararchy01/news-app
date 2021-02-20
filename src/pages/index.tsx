@@ -19,7 +19,7 @@ export default function Home(props) {
         </div>
         <div className={styles.blank} />
         <div className={styles.main}>
-          <Article title="headline" articles={props.topArticles} />
+          <Article title="headlines" articles={props.topArticles} />
         </div>
       </div>
     </MainLayout>
