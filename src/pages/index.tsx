@@ -3,18 +3,24 @@ import styles from "../styles/Home.module.scss";
 import MainLayout from "../layouts";
 import { GetStaticProps } from "next";
 import Article from "../components/article";
+import Nav from "../components/nav";
 
 export default function Home(props) {
-  props.topArticles.map((article) => {
-    console.log(article.title);
-  });
   return (
     <MainLayout>
       <Head>
         <title>News</title>
       </Head>
-      <div className={styles.main}>
-        <Article title="headlines" articles={props.topArticles} />
+      <div className={styles.contents}>
+        <div className={styles.nav}>
+          <nav>
+            <Nav />
+          </nav>
+        </div>
+        <div className={styles.blank} />
+        <div className={styles.main}>
+          <Article title="headline" articles={props.topArticles} />
+        </div>
       </div>
     </MainLayout>
   );
