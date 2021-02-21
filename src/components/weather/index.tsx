@@ -6,6 +6,7 @@ import Props from "../types";
 const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const WeatherNews: React.FC<Props> = ({ weatherNews }) => {
+  console.log(weatherNews.current.weather[0].icon);
   const currentWeatherMain = weatherNews.current.weather[0].main;
   const currentWeatherTemp = weatherNews.current.temp;
   const currentWeatherIcon =
@@ -24,7 +25,7 @@ const WeatherNews: React.FC<Props> = ({ weatherNews }) => {
           </div>
           <Image
             className={styles.weather__icon}
-            src={`/img/weatherIcons/${currentWeatherIcon}.png`}
+            src={`/images/weather/${currentWeatherIcon}.png`}
             alt="Tokyo's weather icon"
             loading="eager"
             width={52}
@@ -35,6 +36,7 @@ const WeatherNews: React.FC<Props> = ({ weatherNews }) => {
         <div className={styles.weather__weekly}>
           <ul className={styles.weather__weekly__list}>
             {weatherNews.daily.map((date, index) => {
+              console.log(date);
               const time = new Date(date.dt * 1000);
               let day = week[time.getDay()];
               const nowDay = week[new Date().getDay()];
@@ -49,7 +51,7 @@ const WeatherNews: React.FC<Props> = ({ weatherNews }) => {
                   <p>{day}</p>
                   <span>
                     <Image
-                      src={`/img/weatherIcons/${date.weather[0].icon}.png`}
+                      src={`/images/weather/${date.weather[0].icon}.png`}
                       className={styles.weatehr__icon}
                       alt={`${day}'s weather icon`}
                       loading="eager"
