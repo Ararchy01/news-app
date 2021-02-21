@@ -41,7 +41,7 @@ const Nav: React.FC = () => {
                 <a>
                   <span>
                     <Image
-                      src={`/images/${topic.icon}.png`}
+                      src={`/images/topics/${topic.icon}.png`}
                       alt={`${topic.title} icon`}
                       loading="eager"
                       width={33}

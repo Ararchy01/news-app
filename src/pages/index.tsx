@@ -1,9 +1,10 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 import MainLayout from "../layouts";
-import { GetStaticProps } from "next";
 import Article from "../components/article";
 import Nav from "../components/nav";
+import WeatherNews from "../components/weather";
+import PickupArticle from "../components/pickup";
 
 export default function Home(props) {
   return (
@@ -21,6 +22,10 @@ export default function Home(props) {
         <div className={styles.main}>
           <Article title="headlines" articles={props.topArticles} />
         </div>
+        <div className={styles.aside}>
+          <WeatherNews weatherNews={props.weatherNews} />
+          <PickupArticle articles={props.pickupArticles} />
+        </div>
       </div>
     </MainLayout>
   );
@@ -34,10 +39,30 @@ export const getStaticProps = async () => {
   const topJson = await topRes.json();
   const topArticles = topJson?.articles;
 
+  const lat = 49.2827;
+  const lon = 123.1207;
+  const exclude = "hourly,minutely";
+  const weatherRes = await fetch(
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=${exclude}&appid=eb25271bc29c0b35d4dfaf63a3772e72`
+  );
+  const weatherJson = await weatherRes.json();
+  const weatherNews = weatherJson;
+
+  const keyword = "software";
+  const sortBy = "popularity";
+  const pickupPageSize = 5;
+  const pickupRes = await fetch(
+    `https://newsapi.org/v2/everything?q=${keyword}&language=ca&sortBy=${sortBy}&pageSize=${pickupPageSize}&apiKey=f941d1c7cef6412e9a3c8d39f6aa3688`
+  );
+  const pickupJson = await pickupRes.json();
+  const pickupArticles = pickupJson?.articles;
+
   return {
     props: {
       topArticles,
+      weatherNews,
+      pickupArticles,
     },
-    revalidate: 60 * 10,
+    revalidate: 60,
   };
 };
