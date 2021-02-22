@@ -74,9 +74,9 @@ const WeatherNews: React.FC<Props> = ({ weatherNews }) => {
           </ul>
         </div>
         <div className={styles.weather__bottom}>
-          <Link href="https://weathernews.jp/onebox/">
+          <Link href="https://weathernews.ca/onebox/">
             <a target="_blank" rel="noopener">
-              ウェザーニュース
+              more...
             </a>
           </Link>
         </div>
