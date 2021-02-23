@@ -18,7 +18,6 @@ export default function Home(props) {
             <Nav />
           </nav>
         </div>
-        <div className={styles.blank} />
         <div className={styles.main}>
           <Article title="headlines" articles={props.topArticles} />
         </div>
