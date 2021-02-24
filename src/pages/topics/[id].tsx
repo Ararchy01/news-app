@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Article from "../../components/article";
-import Nav from "../../components/nav";
-import MainLayout from "../../layouts/index";
+import Article from "../../components/organisms/article";
+import Nav from "../../components/organisms/nav";
+import MainLayout from "../../components/templates/layouts/index";
 import styles from "../../styles/Home.module.scss";
 
 const Topic = (props) => {
@@ -22,7 +22,6 @@ const Topic = (props) => {
             <Nav />
           </nav>
         </div>
-        <div className={styles.blank} />
         <div className={styles.main} style={{ marginRight: "10%" }}>
           <Article title={props.title} articles={props.topicArticles} />
         </div>

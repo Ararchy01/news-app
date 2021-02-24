@@ -1,4 +1,4 @@
-import Header from "../components/header";
+import Header from "../../organisms/header";
 import styles from "./index.module.scss";
 
 type LayoutProps = {

@@ -1,10 +1,10 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.scss";
-import MainLayout from "../layouts";
-import Article from "../components/article";
-import Nav from "../components/nav";
+import MainLayout from "../components/templates/layouts";
+import Article from "../components/organisms/article";
+import Nav from "../components/organisms/nav";
 import WeatherNews from "../components/weather";
-import PickupArticle from "../components/pickup";
+import PickupArticle from "../components/organisms/pickup";
 
 export default function Home(props) {
   return (
@@ -38,8 +38,8 @@ export const getStaticProps = async () => {
   const topJson = await topRes.json();
   const topArticles = topJson?.articles;
 
-  const lat = 49.2827;
-  const lon = 123.1207;
+  const lat = 49.28;
+  const lon = -123.12;
   const exclude = "hourly,minutely";
   const weatherRes = await fetch(
     `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=${exclude}&appid=eb25271bc29c0b35d4dfaf63a3772e72`
