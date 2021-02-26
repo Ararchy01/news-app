@@ -16,7 +16,9 @@ export const Dropdown: React.FunctionComponent<DropdownProps> = (
   const classNames = props.classNames || {};
   return (
     <>
-      <div></div>
+      <div>
+        <p></p>
+      </div>
     </>
   );
 };
