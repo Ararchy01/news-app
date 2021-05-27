@@ -25,6 +25,7 @@ export default function Home(props) {
           <WeatherNews weatherNews={props.weatherNews} />
           <PickupArticle articles={props.pickupArticles} />
         </div>
+        <div></div>
       </div>
     </MainLayout>
   );
