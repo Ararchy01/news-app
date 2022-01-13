@@ -13,7 +13,7 @@ const WeatherNews: React.FC<Props> = ({ weatherNews }) => {
     weatherNews.current.weather[0].icon.slice(0, 2) + "d";
   return (
     <section className={styles.weather}>
-      <h1>Tokyo</h1>
+      <h1>Vancouver</h1>
       <div className={styles.weather__main}>
         <div className={styles.weather__top}>
           <div className={styles.weather__heading}>
