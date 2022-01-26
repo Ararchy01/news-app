@@ -26,7 +26,6 @@ export default function Home(props) {
           <PickupArticle articles={props.pickupArticles} />
         </div>
       </div>
-      <div></div>
     </MainLayout>
   );
 }
